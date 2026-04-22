@@ -1,6 +1,6 @@
 # Gradle Completion Plugin for Oh My Zsh
 
-Smart tab completion for `./gradlew` commands with module path and task suggestions.
+Smart tab completion for `./gradlew` commands with module path and task suggestions. Unlike completion plugins that invoke Gradle on every key press, this plugin uses a local index for instant results — even on large multi-module projects.
 
 ## Features
 
