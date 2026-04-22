@@ -46,6 +46,29 @@ gradle-completion-index-modules
 ./gradlew :<ModuleName>:<TAB>       # Complete tasks for a module
 ```
 
+## Built-in Tasks
+
+These tasks are available for completion out of the box:
+
+| Task | Description |
+|------|-------------|
+| `assembleDebug` | Build debug APK |
+| `assembleRelease` | Build release APK |
+| `installDebug` | Install debug APK on device |
+| `testReleaseUnitTest` | Run unit tests (release) |
+| `testDebugUnitTest` | Run unit tests (debug) |
+| `recordScreenshots` | Record Paparazzi screenshot baselines |
+| `verifyScreenshots` | Verify Paparazzi screenshots |
+| `lint` | Run lint checks |
+| `clean` | Clean build outputs |
+| `dependencyGuard` | Verify dependency guard |
+| `dependencyGuardBaseline` | Update dependency guard baseline |
+| `assemble` | Build all variants |
+| `test` | Run all tests |
+| `tasks` | List available tasks |
+
+To add or modify tasks, see the [Customization](#customization) section.
+
 ## Troubleshooting
 
 If tab completion doesn't find a module (e.g. after adding a new one), re-index:
