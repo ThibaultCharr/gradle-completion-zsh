@@ -19,7 +19,7 @@ _GRADLE_TASKS=(
 )
 
 # Refresh the module cache for the current project
-gradle-refresh-cache() {
+gradle-completion-index-modules() {
   local project_root
   project_root="$(_gradle_get_project_root)" || { echo "Not in a Gradle project"; return 1; }
   local cache_file="$(_gradle_cache_file "$project_root")"

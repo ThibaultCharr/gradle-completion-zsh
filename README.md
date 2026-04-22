@@ -34,7 +34,7 @@ source ~/.zshrc
 
 ```bash
 cd /path/to/your/gradle/project
-gradle-refresh-cache
+gradle-completion-index-modules
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ gradle-refresh-cache
 
 | Command | Description |
 |---------|-------------|
-| `gradle-refresh-cache` | Manually refresh the module cache (run after adding new modules) |
+| `gradle-completion-index-modules` | Manually refresh the module cache (run after adding new modules) |
 
 ## Requirements
 
