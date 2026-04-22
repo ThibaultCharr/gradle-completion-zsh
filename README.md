@@ -5,17 +5,17 @@ Smart tab completion for `./gradlew` commands with module path and task suggesti
 ## Features
 
 - Tab-complete module paths: `./gradlew :domains:<TAB>`
-- Tab-complete tasks: `./gradlew :features:<ModuleName>:impl:<TAB>`
+- Tab-complete tasks: `./gradlew :<ModuleName>:<TAB>`
 - Shows task descriptions for bare commands: `./gradlew <TAB>`
 - Caches module list for fast completions
 - Auto-refreshes cache when `settings.gradle.kts` changes
 
 ## Installation
 
-1. Copy this folder to your oh-my-zsh custom plugins directory:
+1. Copy the cloned folder into your oh-my-zsh custom plugins directory:
 
 ```bash
-cp -r gradle-completion ~/.oh-my-zsh/custom/plugins/
+cp -r gradle-completion-zsh ~/.oh-my-zsh/custom/plugins/gradle-completion
 ```
 
 2. Add `gradle-completion` to your plugins in `~/.zshrc`:
@@ -30,7 +30,7 @@ plugins=(... gradle-completion)
 source ~/.zshrc
 ```
 
-4. **Important**: Run the cache builder on first use:
+4. **Important**: Index your project's modules on first use:
 
 ```bash
 cd /path/to/your/gradle/project
@@ -43,14 +43,23 @@ gradle-completion-index-modules
 ./gradlew <TAB>                    # List common tasks with descriptions
 ./gradlew :<TAB>                   # Start module path completion
 ./gradlew :domains:<TAB>           # Complete module segments
-./gradlew :domains:search:<TAB>    # Complete tasks for a module
+./gradlew :<ModuleName>:<TAB>       # Complete tasks for a module
+```
+
+## Troubleshooting
+
+If tab completion doesn't find a module (e.g. after adding a new one), re-index:
+
+```bash
+cd /path/to/your/gradle/project
+gradle-completion-index-modules
 ```
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `gradle-completion-index-modules` | Manually refresh the module cache (run after adding new modules) |
+| `gradle-completion-index-modules` | Index all modules in the current Gradle project |
 
 ## Requirements
 
