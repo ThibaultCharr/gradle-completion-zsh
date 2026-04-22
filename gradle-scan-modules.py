@@ -13,20 +13,16 @@ if not os.path.isdir(project_root):
     print(f"Error: project root '{project_root}' is not a directory", file=sys.stderr)
     sys.exit(1)
 
-lines = [":app", ":lint:annotations", ":lint:rules", ":macrobenchmark"]
+lines = []
 
-scan_dirs = ["features", "domains", "libraries", "Repositories", "usecases"]
-
-for scan_dir in scan_dirs:
-    scan_path = os.path.join(project_root, scan_dir)
-    if not os.path.isdir(scan_path):
-        continue
-    for dirpath, dirnames, filenames in os.walk(scan_path):
-        dirnames[:] = [d for d in dirnames if d != "build"]
-        if "build.gradle.kts" in filenames:
-            rel = os.path.relpath(dirpath, project_root)
-            module = ":" + rel.replace("/", ":")
-            lines.append(module)
+for dirpath, dirnames, filenames in os.walk(project_root):
+    dirnames[:] = [d for d in sorted(dirnames) if d != "build"]
+    if dirpath == project_root:
+        continue  # skip root-level build.gradle.kts
+    if "build.gradle.kts" in filenames or "build.gradle" in filenames:
+        rel = os.path.relpath(dirpath, project_root)
+        module = ":" + rel.replace("/", ":")
+        lines.append(module)
 
 lines.sort()
 with open(cache_file, "w") as f:

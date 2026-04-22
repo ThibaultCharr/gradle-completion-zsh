@@ -5,7 +5,7 @@ Smart tab completion for `./gradlew` commands with module path and task suggesti
 ## Features
 
 - Tab-complete module paths: `./gradlew :domains:<TAB>`
-- Tab-complete tasks: `./gradlew :features:AdView:impl:<TAB>`
+- Tab-complete tasks: `./gradlew :features:<ModuleName>:impl:<TAB>`
 - Shows task descriptions for bare commands: `./gradlew <TAB>`
 - Caches module list for fast completions
 - Auto-refreshes cache when `settings.gradle.kts` changes
